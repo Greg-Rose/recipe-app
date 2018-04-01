@@ -1,9 +1,9 @@
-<app-header></app-header>
-<div class="container">
+<app-header (selectedPage)="changePage($event)"></app-header>
+<div class="container" id="main-content">
   <div class="row">
     <div class="col">
-      <app-recipes></app-recipes>
-      <app-shopping-list></app-shopping-list>
+      <app-recipes *ngIf="page === 'recipes'"></app-recipes>
+      <app-shopping-list *ngIf="page === 'shopping-list'"></app-shopping-list>
     </div>
   </div>
 </div>

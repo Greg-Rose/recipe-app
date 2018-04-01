@@ -6,15 +6,9 @@
 <hr>
 <div class="row">
   <div class="col">
-    <a *ngFor="let recipe of recipes" href="#" class="list-group-item list-group-item-action d-flex align-items-center">
-      <div class="mr-auto">
-        <h4>{{ recipe.name }}</h4>
-        <p>{{ recipe.description }}</p>
-      </div>
-      <span class="ml-auto">
-        <img [src]="recipe.imagePath" alt="{{ recipe.name }}" class="img-fluid" style="max-height: 50px;">
-      </span>
-    </a>
-    <app-recipe-item></app-recipe-item>
+    <app-recipe-item
+      *ngFor="let recipeEl of recipes"
+      [recipe]="recipeEl"
+      (click)="selectRecipe(recipeEl)"></app-recipe-item>
   </div>
 </div>
