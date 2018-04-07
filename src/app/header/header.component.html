@@ -11,15 +11,28 @@
       </li>
     </ul>
     <ul class="nav navbar-nav ml-auto">
-      <li class="nav-item dropdown" appDropdown>
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Manage
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" (click)="onSaveData()">Save Data</a>
-          <a class="dropdown-item" (click)="onFetchData()">Fetch Data</a>
-        </div>
-      </li>
+      <ng-template [ngIf]="authService.isAuthenticated()">
+        <li class="nav-item dropdown" appDropdown>
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Manage
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" (click)="onSaveData()">Save Data</a>
+            <a class="dropdown-item" (click)="onFetchData()">Fetch Data</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="onSignout()">Sign Out</a>
+        </li>
+      </ng-template>
+      <ng-template [ngIf]="!authService.isAuthenticated()">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/signup">Sign Up</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/signin">Sign In</a>
+        </li>
+      </ng-template>
     </ul>
   </div>
 </nav>
