@@ -9,7 +9,7 @@ import 'rxjs/Rx';
 export class DataStorageService {
 
   constructor(private http: Http,
-              private recipeService: RecipeService
+              private recipeService: RecipeService,
               private authService: AuthService) { }
 
   storeRecipes() {
